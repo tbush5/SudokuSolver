@@ -1,12 +1,9 @@
 def solve(board):
 	loc = findNext(board)
 	if loc == None: 
-		if isSolved(board):
-			for r in board:
-				print(r)
-			return True
-		else:
-			return False
+		for r in board:
+			print(r)
+		return True
 	else:
 		row = loc[0]
 		col = loc[1]
@@ -52,39 +49,6 @@ def broken(board, row, column):
 		r += 1
 
 	return False
-
-
-def isSolved(board):
-	for row in board:
-		for k in range(1, 10):
-			if k not in row:
-				return False
-
-	column = []
-	for col in range(9):
-		for row in range(len(board)):
-			column.append(board[row][col])
-		
-		for k in range(1, 10):
-			if k not in column:
-				return False
-		column.clear()
-	
-	box = []
-	for n in range(3):
-		offset = n*3
-
-		for row in range(3):
-			row += offset
-			for col in range(3):
-				col += offset
-				box.append(board[row][col])
-
-		for k in range(1, 10):
-			if k not in box:
-				return False
-		box.clear()
-	return True
 		
 def findNext(board):
 	for r in range(9):
